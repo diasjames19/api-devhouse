@@ -13,7 +13,7 @@ O objetivo do projeto é aprofundar o nosso conhecimento no NODEJS
 - MOngoDB_CLOUD
 - Express
 - DotEnv
-- Postman (Teste do backEnd)
-- Pacte yarn
+- Insominia(Teste do backEnd)
+- yarn
 
 _Estes códigos estão sobre a licença_ **MIT**
