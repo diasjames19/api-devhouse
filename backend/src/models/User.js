@@ -2,7 +2,9 @@ import {Schema, model} from 'mongoose';
 
 
 const UserSchema = new Schema({
-    email:String
+    name:String,
+    email:String,
+    pass:String,
 });
 
 export default model('User', UserSchema);
