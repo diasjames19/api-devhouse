@@ -20,13 +20,14 @@ class ReserveController{
             const {user_id} = req.headers;
             const { house_id} = req.params;
             const {date} = req.body;
+            let house ={}
             if(mongoose.Types.ObjectId.isValid(house_id)){
-                const house = await House.findById(house_id);
+                house = await House.findById(house_id);
                 if(!house){
                     return res.status(400).json({error:'Essa casa não existe!'});
-                }else{
-                    return res.status(406).json({error:'Codigo da casa não existe'});
                 }
+            }else{
+                return res.status(406).json({error:'Codigo da casa não existe'});
             }
           
             if(house.status != true){
@@ -50,6 +51,14 @@ class ReserveController{
 
         async destroy(req,res){
            const {reserve_id} = req.body;
+           if(mongoose.Types.ObjectId.isValid(reserve_id)){
+            const reserva = await House.findById(reserve_id);
+            if(!reserva){
+                return res.status(400).json({error:'Reservar não existe'})
+            }
+           }else{
+            return res.status(406).json({error:'Codigo da reservar inavalido'})
+           }
            await Reserve.findOneAndDelete({_id:reserve_id});
            return res.send();
         }
