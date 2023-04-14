@@ -61,30 +61,53 @@ class HouseController{
 
         }
         async update(req,res){
-            const schema = Yup.object.shape({
+            const schema = Yup.object().shape({
                 description:Yup.string().required(),
                 price:Yup.number().required(),
                 location:Yup.string().required(),
-                status:Yup.boolean.required(),
+                status:Yup.boolean().required(),
             });
+            
+            const {filename} = req.file;
+            const {description,price,location, status} = req.body;
+            const {user_id} = req.headers;
+            const {house_id} = req.params;
             if(!(await schema.isValid(req.body))){
                 return res.status(400).json({error: 'Falha na validaçõa'})
             }
-            const status = true;
-            const {filename} = req.file;
-            const {description,price,location} = req.body;
-            const {user_id} = req.headers;
-            const {house_id} = req.params;
-            const house = await House.update({
+            
+            const user = await User.findById(user_id);
+            const house = await House.findById(house_id);
+            if(String(user._id)!=String(house.user)){
+        
+                return res.status(401).json({error:'Não autorizado'});
+            }
+         
+            await House.findOneAndUpdate({ _id:house_id },{
                 user:user_id,
                 thumbnail:filename,
                 description,
                 price,
                 location,
                 status,
+                
             });
-            return res.json(house);
+            
+            return res.send({msg:'Atualizado com Sucesso'});
         }
         
+        async destroy(req,res){
+            const {house_id} = req.params;
+            const {user_id} = req.headers;
+            const user = await User.findById(user_id);
+            const house = await House.findById(house_id);
+            if(String(user._id)!=String(house.user)){
+                console.log(user_id);
+                return res.status(401).json({error:'Não autorizado'});
+            }
+         
+            await House.findOneAndDelete({_id:house_id});
+            return res.json({msg:'Excluido com Sucesso!'})
+        }
     }
 export default new HouseController();
