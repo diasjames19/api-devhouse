@@ -14,6 +14,7 @@ O objetivo do projeto é aprofundar o nosso conhecimento no NODEJS
 - Express
 - DotEnv
 - Insominia(Teste do backEnd)
+- Yup
 - yarn
 
 _Estes códigos estão sobre a licença_ **MIT**
