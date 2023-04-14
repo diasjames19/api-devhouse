@@ -19,7 +19,14 @@ import User from '../models/User';
 import * as Yup from 'yup';
 
 class SessionController{
+      /*
+            Configurado para verificar campos
+                - nome: minimo dois caracteres
+                - email: padrão valido @dominio.com.br
+                - pass: minimo seis caracteres
+        */
     async storeSignUp(req,res){
+      
         const schema = Yup.object().shape({
             name:Yup.string().min(2).required(),
             email:Yup.string().email().required(),
