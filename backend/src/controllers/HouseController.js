@@ -79,6 +79,8 @@ class HouseController{
                 if(!checkUser){
                     return res.status(400).json({error:'Esse usuario não existe!'});
                 }
+            }else{
+                return res.status(406).json({error:'ID invalido!'});
             }
             if(!(await schema.isValid(req.body))){
                 return res.status(400).json({error: 'Falha na validaçõa'})
