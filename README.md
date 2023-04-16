@@ -1,4 +1,4 @@
-# Projeto Dev-House (Back-ENd)
+# Projeto Dev-House (Back-End)
 
 
 ## Desenvolvido em Node.js(Versão 18.x)
@@ -10,9 +10,15 @@ O objetivo do projeto é aprofundar o nosso conhecimento no NODEJS
 ### Tecnologias utilizadas:
 
 - Nodejs v18.15.0
+<<<<<<< HEAD
 - MongoDB
     - Atlas
     - Compass
+=======
+- MongoDb
+  - Altas
+  - Compass
+>>>>>>> 1dce4f01951d019d55ccbe71983bac64fe055b4a
 - Express
 - DotEnv
 - Insominia(Teste do backEnd)
