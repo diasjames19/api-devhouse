@@ -24,6 +24,7 @@ destroy(DELETE):Excluir elementos
     
 
 */
+import mongoose from 'mongoose';
 import House from '../models/House';
 import User from '../models/User';
 import * as Yup from 'yup';
@@ -72,6 +73,13 @@ class HouseController{
             const {description,price,location, status} = req.body;
             const {user_id} = req.headers;
             const {house_id} = req.params;
+            let checkUser = {};
+            if(mongoose.Types.ObjectId.isValid(user_id)){
+                checkUser = await User.findById(user_id);
+                if(!checkUser){
+                    return res.status(400).json({error:'Esse usuario não existe!'});
+                }
+            }
             if(!(await schema.isValid(req.body))){
                 return res.status(400).json({error: 'Falha na validaçõa'})
             }
