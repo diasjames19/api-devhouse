@@ -10,7 +10,6 @@ O objetivo do projeto é aprofundar o nosso conhecimento no NODEJS
 ### Tecnologias utilizadas:
 
 - Nodejs v18.15.0
-<<<<<<< HEAD
 - MongoDB
     - Atlas
     - Compass
