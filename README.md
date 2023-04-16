@@ -10,7 +10,9 @@ O objetivo do projeto é aprofundar o nosso conhecimento no NODEJS
 ### Tecnologias utilizadas:
 
 - Nodejs v18.15.0
-- MOngoDB_CLOUD
+- MongoDB
+    - Atlas
+    - Compass
 - Express
 - DotEnv
 - Insominia(Teste do backEnd)
